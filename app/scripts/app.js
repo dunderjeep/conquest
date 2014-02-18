@@ -4,15 +4,23 @@ angular.module('conquestApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.router'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
+  .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider
+      .otherwise('/');
+    $stateProvider
+      .state("home", {
+        url: "/",
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      });
+   /* $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+      })*/
+  }])
+.constant('FBURL', 'con-quest.firebaseIO.com');
