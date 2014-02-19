@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('conquestApp', [
+var app = angular.module('conquestApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
@@ -9,19 +9,15 @@ angular.module('conquestApp', [
     'ui.router'
     
 ])
-  .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $stateProvider, $urlRouterProvider) {
+  app.config(['$routeProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider
       .otherwise('/');
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
-        })
-        .state('signin', {
-            url: 'signin',
-            templateUrl: 'views/signin.html'
+            templateUrl: 'views/posts.html',
+            controller: 'PostsCtrl'
         });
    /* $routeProvider
       .when('/', {
