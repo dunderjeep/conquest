@@ -29,8 +29,8 @@ var app = angular.module('conquestApp', [
   //    angularFireAuth.initialize(new Firebase(FBURL), {scope: $rootScope, name: 'auth', path: '/signin'});
       $rootScope.FBURL = FBURL;
     }])*/
-.constant('FBURL', 'con-quest.firebaseIO.com')
-.run(['FBURL', '$rootScope', function(FBURL, $rootScope){
+.constant('FIREBASE_URL', 'https://con-quest.firebaseio.com/')
+/*.run(['FBURL', '$rootScope', function(FBURL, $rootScope){
     var conRef = new Firebase(FBURL);
     var auth = new FirebaseSimpleLogin(conRef, function(error, user) {
       if (error) {
@@ -47,4 +47,4 @@ var app = angular.module('conquestApp', [
     $rootScope.FBURL = FBURL;
     $rootScope.auth = auth;
     auth.login('facebook');
-}]);
+}])*/;

@@ -1,8 +1,26 @@
 'use strict';
 
 app
-  .factory('Post', function ($resource) {
+  .factory('Post', function ($firebase, FIREBASE_URL) {
 
-    return $resource('https://con-quest.firebaseIO.com/posts/:id.json');
+      var ref = new Firebase(FIREBASE_URL + 'posts');
+
+      var posts = $firebase(ref);
+      
+      var Post = {
+      
+        all: posts,
+        create: function(post) {
+            return posts.$add(post);
+        },
+        find: function (postId) {
+            return posts.$child(postId);
+        },
+        delete: function (postsId) {
+            return posts.$remove(postsId);
+        }
+       };
+           
+        return Post;
       
   });
